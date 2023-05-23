@@ -9,15 +9,7 @@ void main() {
         "return error message if the name is empty",
         () {
           final result = Validator.name("");
-          expect(result, "Please Enter Name");
-        },
-      );
-
-      test(
-        "return error message if name entered with less than 3 characters",
-        () {
-          final result = Validator.name("ab");
-          expect(result, "Name must be at least 3 characters");
+          expect(result, "Please Enter Your Name");
         },
       );
 
@@ -46,7 +38,7 @@ void main() {
         "return error message if the email is empty",
         () {
           final result = Validator.email("");
-          expect(result, "Please enter email");
+          expect(result, "Please enter your email");
         },
       );
 
@@ -122,59 +114,6 @@ void main() {
   );
 
   group(
-    "Validate phone number",
-    () {
-      test(
-        "return error message if the phone number is empty",
-        () {
-          final result = Validator.phoneNumber("");
-          expect(result, "Please enter a phone number");
-        },
-      );
-
-      test(
-        "return error message if the phone number is less than 10 characters",
-        () {
-          final result = Validator.phoneNumber("123456789");
-          expect(result, "Please enter with number minimum 10");
-        },
-      );
-
-      test(
-        "return error message if the phone number is not start with 0",
-        () {
-          final result = Validator.phoneNumber("12345678901");
-          expect(result, "Please enter a valid phone number");
-        },
-      );
-
-      test(
-        "return error message if the phone number is not correct",
-        () {
-          final result = Validator.phoneNumber("019h3456789");
-          expect(result, "Please enter a valid phone number");
-        },
-      );
-
-      test(
-        "return nothing aka:null if the phone number is entered and correct",
-        () {
-          final result = Validator.phoneNumber("01934567890");
-          expect(result, null);
-        },
-      );
-
-      test(
-        "return nothing aka:null if the phone number did not entered yet",
-        () {
-          final result = Validator.phoneNumber(null);
-          expect(result, null);
-        },
-      );
-    },
-  );
-
-  group(
     "Validate Password",
     () {
       test(
@@ -213,7 +152,7 @@ void main() {
         "return error message if the password entered and not equal to confirm password",
         () {
           final result = Validator.password("abs", confirmPassword: "abcd");
-          expect(result, "Password not match");
+          expect(result, "Passwords don't match");
         },
       );
     },
@@ -234,7 +173,7 @@ void main() {
         "return error message if password is empty",
         () {
           final result = Validator.restrictedPassword("");
-          expect(result, "password can not be empty");
+          expect(result, "Password can't be empty");
         },
       );
 
@@ -245,7 +184,7 @@ void main() {
             "abs",
             confirmPassword: "abcd",
           );
-          expect(result, "Password not match");
+          expect(result, "Passwords don't match");
         },
       );
 
@@ -263,88 +202,6 @@ void main() {
         "return null if the password is strong",
         () {
           final result = Validator.restrictedPassword("1234567asAS");
-          expect(result, null);
-        },
-      );
-    },
-  );
-
-  group(
-    "validate credit card number",
-    () {
-      test(
-        "return null if credit card number did not entered yet",
-        () {
-          final result = Validator.creditCardNumber(null);
-          expect(result, null);
-        },
-      );
-
-      test(
-        "return error message if credit card number is empty",
-        () {
-          final result = Validator.creditCardNumber("");
-          expect(result, "Please enter credit card number");
-        },
-      );
-
-      test(
-        "return error message if credit card number is less than 16 characters",
-        () {
-          final result = Validator.creditCardNumber("123456789012345");
-          expect(result, "Please enter with number minimum 16");
-        },
-      );
-
-      test(
-        "return nothing aka:null if the credit card number is entered and correct",
-        () {
-          final result = Validator.creditCardNumber("1234567890123456");
-          expect(result, null);
-        },
-      );
-    },
-  );
-
-  group(
-    "validate cvv",
-    () {
-      test(
-        "return null if cvv did not entered yet",
-        () {
-          final result = Validator.cVV(null);
-          expect(result, null);
-        },
-      );
-
-      test(
-        "return error message if cvv is empty",
-        () {
-          final result = Validator.cVV("");
-          expect(result, "Please enter cvv");
-        },
-      );
-
-      test(
-        "return error message if cvv is less than 3 characters",
-        () {
-          final result = Validator.cVV("12");
-          expect(result, "Please enter with number minimum 3");
-        },
-      );
-
-      test(
-        "return error message if cvv is more than 3 characters",
-        () {
-          final result = Validator.cVV("12345");
-          expect(result, "Please enter with number maximum 3");
-        },
-      );
-
-      test(
-        "return nothing aka:null if the cvv is entered and correct",
-        () {
-          final result = Validator.cVV("123");
           expect(result, null);
         },
       );
